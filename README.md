@@ -9,6 +9,7 @@ This is WIP in very early stage.
 
 ```
 npm install
+export FLICKR_KEY=your-key
 npm start
 open http://localhost:3000
 ```

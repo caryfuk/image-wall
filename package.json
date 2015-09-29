@@ -1,5 +1,5 @@
 {
-  "name": "Image wall",
+  "name": "image-wall",
   "version": "0.0.5",
   "description": "Fullscreen image viewer app based on Dan Abramov's react-hot-boilerplate",
   "scripts": {
@@ -38,6 +38,7 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "express": "^4.13.3",
     "react": "^0.13.0",
     "request": "^2.64.0"
   }

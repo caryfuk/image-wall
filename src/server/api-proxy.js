@@ -1,5 +1,4 @@
 var express = require('express');
-var config = require('../../config/default.json');
 var request = require('request');
 
 var app = express();
@@ -8,7 +7,7 @@ var app = express();
 app.get('/search', function (req, res) {
 
   // Cross origin
-  res.header('Access-Control-Allow-Origin', 'http://' + config.domain + ':' + config.port);
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
   var userQuery = req.query.query || '';
@@ -22,7 +21,7 @@ app.get('/search', function (req, res) {
     request({
       url: 'https://query.yahooapis.com/v1/public/yql',
       qs: {
-        q: 'select * from flickr.photos.search where has_geo="true" and text="' + userQuery + '" and api_key="' + config.api_key+ '"',
+        q: 'select * from flickr.photos.search where has_geo="true" and text="' + userQuery + '" and api_key="' + process.env.FLICKR_KEY + '"',
         format: 'json'
       },
       json: true
@@ -39,11 +38,11 @@ app.get('/search', function (req, res) {
   }
 });
 
-app.listen(config.port, config.domain, function(err) {
+app.listen(3001, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://' + config.domain + ':' + config.port);
+  console.log('Listening at http://localhost:3001');
 });

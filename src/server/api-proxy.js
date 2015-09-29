@@ -7,8 +7,9 @@ var app = express();
 app.get('/search', function (req, res) {
 
   // Cross origin
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', 'true');
 
   var userQuery = req.query.query || '';
 
@@ -43,6 +44,5 @@ app.listen(3001, 'localhost', function(err) {
     console.log(err);
     return;
   }
-
   console.log('Listening at http://localhost:3001');
 });

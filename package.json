@@ -1,32 +1,33 @@
 {
-  "name": "react-hot-boilerplate",
-  "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "name": "Image wall",
+  "version": "0.0.5",
+  "description": "Fullscreen image viewer app based on Dan Abramov's react-hot-boilerplate",
   "scripts": {
     "start": "node src/server/api-proxy.js | node src/server/server.js",
     "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/caryfuk/image-wall"
   },
   "keywords": [
     "react",
     "reactjs",
-    "boilerplate",
     "hot",
     "reload",
     "hmr",
     "live",
     "edit",
-    "webpack"
+    "webpack",
+    "flickr",
+    "image",
+    "viewer"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
-  "license": "MIT",
+  "author": "Pavel Moravec <pavel.moravec@gmail.com> (http://github.com/caryfuk)",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/caryfuk/image-wall/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "https://github.com/caryfuk/image-wall",
   "devDependencies": {
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",

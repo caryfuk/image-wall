@@ -22,20 +22,24 @@ export default class App extends Component {
 
   renderResults() {
     if (this.state.photos.length > 0) {
-      this.state.photos.map(function (photo, index) {
-        var imageUrl = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
+      return (
+        <ul>
+          {this.state.photos.map(function (photo, index) {
+            var imageUrl = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
 
-        return (
-          <li>
-            <div>
-              <a href={imageUrl} target="_blank">
-                <img src={imageUrl} alt={photo.title} />
-                <span>{photo.title}</span>
-              </a>
-            </div>
-          </li>
-        );
-      });
+            return (
+              <li>
+                <div>
+                  <a href={imageUrl} target="_blank">
+                    <img src={imageUrl} alt={photo.title} />
+                    <span>{photo.title}</span>
+                  </a>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      );
     } else {
       return <p>empty</p>;
     }
@@ -45,9 +49,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Image wall</h1>
-        <ul>
-          {this.renderResults()}
-        </ul>
+        {this.renderResults()}
       </div>
     );
   }

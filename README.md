@@ -13,3 +13,9 @@ export FLICKR_KEY=your-key
 npm start
 open http://localhost:3000
 ```
+
+
+### To be done soon
+ - meaningful components structure - list, image, search widget
+ - better route handling (listening for url changes, using browser history api)
+ - adding some style preprocessor

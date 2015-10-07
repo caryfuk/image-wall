@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchFromFlickr } from '../api';
-import { List } from './List';
+import { ImageList } from './ImageList';
 
 export default class App extends Component {
 
@@ -17,20 +17,11 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.photos.length > 0) {
-      return (
-        <div>
-          <h2>Results for: {this.props.params.query}</h2>
-          <List photos={this.state.photos} />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h2>Results for: {this.props.params.query}</h2>
-          <p>Loading results...</p>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <h2>Results for: {this.props.params.query}</h2>
+        <ImageList photos={this.state.photos} />
+      </div>
+    );
   }
 }

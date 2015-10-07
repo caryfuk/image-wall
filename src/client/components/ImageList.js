@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-export default class List extends Component {
+export default class ImageList extends Component {
 
   render() {
     if (this.props.photos.length > 0) {
       return (
         <ul>
-          {this.props.photos.map(function (photo, index) {
+          {this.props.photos.map((photo, index) => {
             var imageUrl = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
             return (
               <li>

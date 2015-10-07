@@ -13,7 +13,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.setState({photos: fetchFromFlickr()});
+    fetchFromFlickr.bind(this)();
   }
 
   render() {

@@ -12,7 +12,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({photos: fetchFromFlickr(this.props.params.query)});
+    fetchFromFlickr.bind(this)();
   }
 
   render() {

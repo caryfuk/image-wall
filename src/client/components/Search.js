@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import rp from 'request-promise';
-import { Router, Link } from 'react-router';
+import { fetchFromFlickr } from '../api';
 
 export default class App extends Component {
 
@@ -13,16 +12,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    var self = this;
-    rp('http://localhost:3001/search?query=' + this.props.params.query)
-      .then(
-        function(response) {
-          self.setState({photos: JSON.parse(response)});
-        }
-      )
-      .catch(function(e) {
-        console.error('Error loading response.');
-      });
+    this.setState({photos: fetchFromFlickr(this.props.params.query)});
   }
 
   render() {

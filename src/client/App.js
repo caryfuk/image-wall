@@ -13,7 +13,7 @@ export default class App extends Component {
 
   componentDidMount() {
     var self = this;
-    rp('http://localhost:3001/search?query=Hloubětín')
+    rp('http://localhost:3001/search?query=')
       .then(
         function(response) {
           self.setState({photos: JSON.parse(response)});

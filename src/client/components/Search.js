@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import rp from 'request-promise';
-import { Link } from 'react-router';
+import { Router, Link } from 'react-router';
 
-export default class Home extends Component {
+export default class App extends Component {
 
   constructor() {
     super();
@@ -14,7 +14,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     var self = this;
-    rp('http://localhost:3001/search?query=')
+    rp('http://localhost:3001/search?query=' + this.props.params.query)
       .then(
         function(response) {
           self.setState({photos: JSON.parse(response)});
@@ -25,13 +25,11 @@ export default class Home extends Component {
       });
   }
 
-  renderResults() {
+  render() {
     if (this.state.photos.length > 0) {
       return (
         <div>
-          <h2>Random images</h2>
-          <p>Try: <Link to="/search/hloubetin">hloubetin</Link></p>
-
+          <h2>Results for: {this.props.params.query}</h2>
           <ul>
             {this.state.photos.map(function (photo, index) {
               var imageUrl = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
@@ -48,16 +46,12 @@ export default class Home extends Component {
         </div>
       );
     } else {
-      return <p>Loading results...</p>;
+      return (
+        <div>
+          <h2>Results for: {this.props.params.query}</h2>
+          <p>Loading results...</p>
+        </div>
+      );
     }
-  }
-
-  render() {
-    return (
-      <div>
-        <h1><Link to="/">Image wall</Link></h1>
-        {this.renderResults()}
-      </div>
-    );
   }
 }

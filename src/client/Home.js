@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import rp from 'request-promise';
 
-export default class App extends Component {
+export default class Home extends Component {
 
   constructor() {
     super();

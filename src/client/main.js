@@ -3,7 +3,7 @@ import App from './components/App';
 import Home from './components/Home';
 import Search from './components/Search';
 import NoMatch from './components/NoMatch';
-import { Router, Route, Link, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import { createHistory } from 'history';
 
 const routes = (

@@ -7,14 +7,12 @@ import { Router, Route, Link } from 'react-router';
 window.Router = Router;
 
 const routes = (
-  <Route path="/" component={Home}>
-    <Route path="search" component={Search}>
-      <Route path="/search/:query" component={Search}/>
-    </Route>
+  <Router>
+    <Route path="/" component={Home}/>
+    <Route path="search" component={Search}/>
+    <Route path="search/:query" component={Search}/>
     <Route path="*" component={NoMatch}/>
-  </Route>
+  </Router>
 );
 
-React.render((
-  <Router>{routes}</Router>
-), document.getElementById('root'));
+React.render(routes, document.getElementById('root'));

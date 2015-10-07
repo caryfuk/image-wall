@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import rp from 'request-promise';
+import { Router, Link } from 'react-router';
 
 export default class App extends Component {
 
@@ -7,18 +8,13 @@ export default class App extends Component {
     super();
 
     this.state = {
-      photos: [],
-      query: []
+      photos: []
     };
   }
 
   componentDidMount() {
     var self = this;
-    self.setState({
-      // route components are rendered with useful information, like URL params
-      query: this.props.params.query
-    });
-    rp('http://localhost:3001/search?query=' + self.state.query)
+    rp('http://localhost:3001/search?query=' + this.props.params.query)
       .then(
         function(response) {
           self.setState({photos: JSON.parse(response)});
@@ -33,18 +29,16 @@ export default class App extends Component {
     if (this.state.photos.length > 0) {
       return (
         <div>
-          <h2>Results for: {this.state.query}</h2>
+          <h2>Results for: {this.props.params.query}</h2>
           <ul>
             {this.state.photos.map(function (photo, index) {
               var imageUrl = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '.jpg';
               return (
                 <li>
-                  <div>
-                    <a href={imageUrl} target="_blank">
-                      <img src={imageUrl} alt={photo.title} />
-                      <span>{photo.title}</span>
-                    </a>
-                  </div>
+                  <a href={imageUrl} target="_blank">
+                    <img src={imageUrl} alt={photo.title} />
+                    <span>{photo.title}</span>
+                  </a>
                 </li>
               );
             })}
@@ -52,14 +46,19 @@ export default class App extends Component {
         </div>
       );
     } else {
-      return <p>No results</p>;
+      return (
+        <div>
+          <h2>Results for: {this.props.params.query}</h2>
+          <p>Loading results...</p>
+        </div>
+      );
     }
   }
 
   render() {
     return (
       <div>
-        <h1>Image wall</h1>
+        <h1><Link to="/">Image wall</Link></h1>
         {this.renderResults()}
       </div>
     );

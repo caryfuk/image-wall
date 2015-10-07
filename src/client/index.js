@@ -3,11 +3,14 @@ import Home from './Home';
 import Search from './Search';
 import NoMatch from './NoMatch';
 import { Router, Route, Link } from 'react-router';
+import { createHistory, useBasename } from 'history';
 
-window.Router = Router;
+const history = useBasename(createHistory)({
+  basename: ''
+});
 
 const routes = (
-  <Router>
+  <Router history={history}>
     <Route path="/" component={Home}/>
     <Route path="search" component={Search}/>
     <Route path="search/:query" component={Search}/>

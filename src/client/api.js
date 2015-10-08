@@ -6,7 +6,7 @@ export function fetchFromFlickr() {
   console.log('query: ' + query);
   const options = {
     withCredentials: false,
-    uri : 'http://localhost:3001/search?query=' + query,
+    uri : window.location.protocol + '//' + window.location.hostname + ':3001/search?query=' + query,
     method : 'GET'
   };
   rp(options)

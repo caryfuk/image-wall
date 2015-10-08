@@ -33,10 +33,10 @@ app.get('/search', function (req, res) {
   });
 });
 
-app.listen(3001, 'localhost', function(err) {
+app.listen(3001, function(err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listening at http://localhost:3001');
+  console.log('Listening for all incoming requsest at 3001.');
 });

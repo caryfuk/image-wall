@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Image } from './Image';
 
-export class ImageList extends Component {
+export class ImageGrid extends Component {
 
   render() {
     if (this.props.photos.length > 0) {
@@ -11,7 +12,7 @@ export class ImageList extends Component {
             return (
               <li key={index}>
                 <a href={imageUrl} target="_blank">
-                  <img src={imageUrl} alt={photo.title} />
+                  <Image src={imageUrl} alt={photo.title} />
                   <span>{photo.title}</span>
                 </a>
               </li>

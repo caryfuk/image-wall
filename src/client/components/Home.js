@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { fetchFromFlickr } from '../api';
-import { ImageList } from './ImageList';
+import { ImageGrid } from './ImageGrid';
 
 export default class Home extends Component {
 
@@ -23,7 +23,7 @@ export default class Home extends Component {
         <h2>Random images</h2>
         <p>Try: <Link to="/search/hloubetin">hloubetin</Link></p>
 
-        <ImageList photos={this.state.photos} />
+        <ImageGrid photos={this.state.photos} />
       </div>
     );
   }

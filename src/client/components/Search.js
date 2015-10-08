@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchFromFlickr } from '../api';
-import { ImageList } from './ImageList';
+import { ImageGrid } from './ImageGrid';
 
 export default class App extends Component {
 
@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <div>
         <h2>Results for: {this.props.params.query}</h2>
-        <ImageList photos={this.state.photos} />
+        <ImageGrid photos={this.state.photos} />
       </div>
     );
   }

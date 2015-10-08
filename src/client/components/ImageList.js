@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ImageList extends Component {
+export class ImageList extends Component {
 
   render() {
     if (this.props.photos.length > 0) {

@@ -4,7 +4,12 @@ export function fetchFromFlickr() {
   const self = this;
   const query = self.props.params.query || '';
   console.log('query: ' + query);
-  rp('http://localhost:3001/search?query=' + query)
+  const options = {
+    withCredentials: false,
+    uri : 'http://localhost:3001/search?query=' + query,
+    method : 'GET'
+  };
+  rp(options)
     .then(function(response) {
         self.setState({photos: JSON.parse(response)});
       }

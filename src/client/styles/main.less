@@ -24,14 +24,22 @@ li {
   overflow: hidden;
   position: relative;
   transform: scale(0);
-  filter: blur(20px);
+  filter: blur(30px);
   opacity: 0;
-  animation: appear .2s forwards;
+  animation: appear 100ms forwards;
 
-  .img-cont {
+  .imageloader {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    filter: blur(30px);
+    opacity: 0;
+    transition: 200ms all;
+
+    &.loaded {
+      filter: blur(0);
+      opacity: 1;
+    }
   }
 
   a {
@@ -64,13 +72,13 @@ li {
 
 @keyframes appear {
   from {
-    transform: scale(0);
-    filter: blur(20px);
+    filter: blur(30px);
     opacity: 0;
+    transform: scale(0);
   }
   to {
-    transform: scale(1);
     filter: blur(0);
     opacity: 1;
+    transform: scale(1);
   }
 }

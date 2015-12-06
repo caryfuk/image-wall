@@ -27,7 +27,7 @@ export default class App extends Component {
       <div>
         <h2>
           Results for:
-          <input type='text' onChange={this.onQueryEnter.bind(this)} ref='queryInput' value={this.props.query} />
+          <input type='text' onChange={this.onQueryEnter.bind(this)} ref='queryInput' value={this.props.params.query} />
         </h2>
         <ImageGrid photos={this.state.photos} />
       </div>

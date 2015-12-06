@@ -26,6 +26,14 @@ module.exports = {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, '../client')
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css?modules&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      {
+        test: /\.less/,
+        loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 version!less-loader'
       }
     ]
   },

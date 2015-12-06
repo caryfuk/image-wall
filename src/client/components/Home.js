@@ -17,11 +17,16 @@ export default class Home extends Component {
     fetchFromFlickr.bind(this)();
   }
 
+  onQueryEnter() {
+    let query = React.findDOMNode(this.refs.queryInput).value;
+    this.props.history.pushState({ the: 'state' }, '/search/' + query);
+  }
+
   render() {
     return (
       <div>
         <h2>Random images</h2>
-        <p>Try: <Link to="/search/hloubetin">hloubetin</Link></p>
+        <input type='text' onChange={this.onQueryEnter.bind(this)} ref='queryInput' />
 
         <ImageGrid photos={this.state.photos} />
       </div>

@@ -16,10 +16,19 @@ export default class App extends Component {
     fetchFromFlickr.bind(this)();
   }
 
+  onQueryEnter() {
+    let query = React.findDOMNode(this.refs.queryInput).value;
+    this.props.history.pushState({ query: query }, '/search/' + query);
+    fetchFromFlickr.bind(this)();
+  }
+
   render() {
     return (
       <div>
-        <h2>Results for: {this.props.params.query}</h2>
+        <h2>
+          Results for:
+          <input type='text' onChange={this.onQueryEnter.bind(this)} ref='queryInput' value={this.props.query} />
+        </h2>
         <ImageGrid photos={this.state.photos} />
       </div>
     );

@@ -1,8 +1,7 @@
 import rp from 'request-promise';
 
-export function fetchFromFlickr() {
+export function fetchFromFlickr(query) {
   const self = this;
-  const query = self.state.query;
   console.log('query: ' + query);
   const options = {
     withCredentials: false,

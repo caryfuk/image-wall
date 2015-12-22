@@ -17,15 +17,16 @@ export default class App extends Component {
     this.setState({
       query: this.props.params.query
     });
-    fetchFromFlickr.call(this);
+    fetchFromFlickr.call(this, this.props.params.query);
   }
 
   onQueryInput(e) {
+    let val = React.findDOMNode(e.target).value
     this.setState({
-      query: React.findDOMNode(e.target).value
+      query: val
     });
-    this.props.history.pushState(this.state.query, '/search/' + this.state.query);
-    fetchFromFlickr.call(this);
+    this.props.history.pushState(val, '/search/' + val);
+    fetchFromFlickr.call(this, val);
   }
 
   render() {
@@ -33,7 +34,7 @@ export default class App extends Component {
       <div>
         <h2>
           Results for:
-          <input type='text' onKeyUp={this.onQueryInput.bind(this)} defaultValue={this.props.params.query} />
+          <input type='text' onChange={this.onQueryInput.bind(this)} defaultValue={this.props.params.query} />
         </h2>
         <ImageGrid photos={this.state.photos} />
       </div>

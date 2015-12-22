@@ -8,18 +8,24 @@ export default class App extends Component {
     super();
 
     this.state = {
-      photos: []
+      photos: [],
+      query: ''
     };
   }
 
   componentDidMount() {
-    fetchFromFlickr.bind(this)();
+    this.setState({
+      query: this.props.params.query
+    });
+    fetchFromFlickr.call(this);
   }
 
-  onQueryEnter() {
-    let query = React.findDOMNode(this.refs.queryInput).value;
-    this.props.history.pushState({ query: query }, '/search/' + query);
-    fetchFromFlickr.bind(this)();
+  onQueryInput(e) {
+    this.setState({
+      query: React.findDOMNode(e.target).value
+    });
+    this.props.history.pushState(this.state.query, '/search/' + this.state.query);
+    fetchFromFlickr.call(this);
   }
 
   render() {
@@ -27,7 +33,7 @@ export default class App extends Component {
       <div>
         <h2>
           Results for:
-          <input type='text' onChange={this.onQueryEnter.bind(this)} ref='queryInput' value={this.props.params.query} />
+          <input type='text' onKeyUp={this.onQueryInput.bind(this)} defaultValue={this.props.params.query} />
         </h2>
         <ImageGrid photos={this.state.photos} />
       </div>
